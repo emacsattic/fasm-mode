@@ -4,7 +4,7 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
-;; Version: 0.1
+;; Version: 0.1.1
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -39,7 +39,7 @@
 ;;; Code:
 
 (defvar fasm-mode-hook nil)
-  
+
 (defvar fasm-mode-syntax-table
   (let ((syntaxtable (make-syntax-table)))
     (modify-syntax-entry ?_ "w" syntaxtable)
@@ -350,16 +350,27 @@
     ("^[ \t]*\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\):"
      . (1 font-lock-function-name-face))
     ;; Macro names
-    ("\\(?:macro\\|struc\\)[ \t]*\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\)" .
-     (1 font-lock-function-name-face)))
+    ("\\(?:macro\\|struc\\)[ \t]*\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\)"
+     . (1 font-lock-function-name-face)))
   "Syntax highlighting for FASM mode.")
+
+(defun fasm--get-indent-level (lineoffset)
+  (save-excursion
+    (forward-line lineoffset)
+    (beginning-of-line)
+    (if indent-tabs-mode
+        (* fasm-basic-offset (skip-chars-forward "\t" (point-at-eol)))
+      (skip-chars-forward " " (point-at-eol)))))
 
 (defun fasm-indent-line ()
   "Indent according to FASM major mode."
-  ;; TODO: it's way too dumb ATM
   (interactive)
-  (let ((tab-width fasm-basic-offset))
-    (insert-tab)))
+  (let ((previndent (if (bobp) 0 (fasm--get-indent-level -1)))
+        (currindent (fasm--get-indent-level 0)))    
+    (if (> previndent currindent)
+        (indent-to previndent)
+      (let ((tab-width fasm-basic-offset))
+        (insert-tab)))))
 
 ;;;###autoload
 (define-derived-mode fasm-mode prog-mode "Fasm"
