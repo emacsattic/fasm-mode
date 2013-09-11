@@ -4,7 +4,7 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
-;; Version: 0.1.2
+;; Version: 0.1.3
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -371,8 +371,12 @@
           (indent-to previndent)
         (insert-tab)))))
 
+;; Emacs < 24 did not have prog-mode
+(defalias 'fasm-parent-mode
+  (if (fboundp 'prog-mode) 'prog-mode 'fundamental-mode))
+
 ;;;###autoload
-(define-derived-mode fasm-mode prog-mode "Fasm"
+(define-derived-mode fasm-mode fasm-parent-mode "Fasm"
   "Major mode for editing assembly in FASM format."
   (set (make-local-variable 'font-lock-defaults)
        (list 'fasm-font-lock-keywords nil t))
