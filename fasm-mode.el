@@ -4,17 +4,17 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
-;; Version: 0.1.1
+;; Version: 0.1.2
 
 ;; This file is NOT part of GNU Emacs.
 
 ;; Copyright (c) 2013, Fanael Linithien
 ;; All rights reserved.
-;; 
+;;
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions are
 ;; met:
-;; 
+;;
 ;;   * Redistributions of source code must retain the above copyright
 ;;     notice, this list of conditions and the following disclaimer.
 ;;   * Redistributions in binary form must reproduce the above copyright
@@ -23,7 +23,7 @@
 ;;   * Neither the name of the copyright holder(s) nor the names of any
 ;;     contributors may be used to endorse or promote products derived from
 ;;     this software without specific prior written permission.
-;; 
+;;
 ;; THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
 ;; IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
 ;; TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
@@ -356,20 +356,19 @@
 
 (defun fasm--get-indent-level (lineoffset)
   (save-excursion
-    (forward-line lineoffset)
-    (beginning-of-line)
-    (if indent-tabs-mode
-        (* fasm-basic-offset (skip-chars-forward "\t" (point-at-eol)))
-      (skip-chars-forward " " (point-at-eol)))))
+    (beginning-of-line-text lineoffset)
+    (current-column)))
 
 (defun fasm-indent-line ()
   "Indent according to FASM major mode."
   (interactive)
-  (let ((previndent (if (bobp) 0 (fasm--get-indent-level -1)))
-        (currindent (fasm--get-indent-level 0)))    
-    (if (> previndent currindent)
-        (indent-to previndent)
-      (let ((tab-width fasm-basic-offset))
+  (let ((tab-width fasm-basic-offset))
+    (let ((previndent (if (bobp) 0 (fasm--get-indent-level 0)))
+          (currindent (fasm--get-indent-level 1)))
+      (if (or (> previndent currindent)
+              (eq this-command 'newline-and-indent)
+              (eq this-command 'evil-ret-and-indent))
+          (indent-to previndent)
         (insert-tab)))))
 
 ;;;###autoload
