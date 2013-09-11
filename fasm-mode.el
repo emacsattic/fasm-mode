@@ -1,10 +1,10 @@
-;;; fasm-mode.el --- Fasm major mode -*- lexical-binding: t -*-
+;;; fasm-mode.el --- Fasm major mode
 
 ;; Copyright 2013 Fanael Linithien
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
-;; Version: 0.1.3
+;; Version: 0.1.4
 
 ;; This file is NOT part of GNU Emacs.
 
