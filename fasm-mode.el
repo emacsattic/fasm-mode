@@ -4,7 +4,7 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
-;; Version: 0.1.4
+;; Version: 0.1.5
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -84,9 +84,9 @@
     (,(eval-when-compile
         (fasm--regexp-from-keywords
          "mod" "rva" "plt" "align" "as" "at" "defined" "dup" "eq" "eqtype"
-         "from" "in" "or" "ptr" "relativeto" "used" "binary" "export" "fixups"
-         "import" "native" "static" "console" "dynamic" "efiboot" "linkinfo"
-         "readable" "resource" "writable" "shareable" "writeable" "efiruntime"
+         "from" "ptr" "relativeto" "used" "binary" "export" "fixups" "import"
+         "native" "static" "console" "dynamic" "efiboot" "linkinfo" "readable"
+         "resource" "writable" "shareable" "writeable" "efiruntime"
          "executable" "linkremove" "discardable" "interpreter" "notpageable"
          "if" "end" "err" "org" "data" "else" "heap" "load" "align" "break"
          "entry" "extrn" "label" "stack" "store" "times" "while" "assert"
