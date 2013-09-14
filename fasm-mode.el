@@ -1,7 +1,5 @@
 ;;; fasm-mode.el --- Fasm major mode
 
-;; Copyright 2013 Fanael Linithien
-
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
 ;; Version: 0.1.5
