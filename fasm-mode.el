@@ -2,7 +2,7 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
-;; Version: 0.1.5
+;; Version: 0.1.6
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -348,7 +348,7 @@
     ("^[ \t]*\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\):"
      . (1 font-lock-function-name-face))
     ;; Macro names
-    ("\\(?:macro\\|struc\\)[ \t]*\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\)"
+    ("\\(?:macro\\|struc\\)[ \t]+\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\)"
      . (1 font-lock-function-name-face)))
   "Syntax highlighting for FASM mode.")
 
