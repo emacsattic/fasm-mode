@@ -354,7 +354,8 @@
 
 (defun fasm--get-indent-level (lineoffset)
   (save-excursion
-    (beginning-of-line-text lineoffset)
+    (forward-line (1- lineoffset))
+    (back-to-indentation)
     (current-column)))
 
 (defun fasm-indent-line ()
