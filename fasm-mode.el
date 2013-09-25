@@ -2,7 +2,7 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://bitbucket.org/Fanael/fasm-mode
-;; Version: 0.1.6
+;; Version: 0.1.7
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -362,7 +362,7 @@
   "Indent according to FASM major mode."
   (interactive)
   (let ((tab-width fasm-basic-offset))
-    (let ((previndent (if (bobp) 0 (fasm--get-indent-level 0)))
+    (let ((previndent (fasm--get-indent-level 0))
           (currindent (fasm--get-indent-level 1)))
       (if (or (> previndent currindent)
               (eq this-command 'newline-and-indent)
