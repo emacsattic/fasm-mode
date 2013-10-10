@@ -1,7 +1,7 @@
 ;;; fasm-mode.el --- Fasm major mode
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
-;; URL: https://bitbucket.org/Fanael/fasm-mode
+;; URL: https://github.com/Fanael/fasm-mode
 ;; Version: 0.1.7
 
 ;; This file is NOT part of GNU Emacs.
