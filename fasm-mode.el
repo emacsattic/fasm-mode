@@ -380,7 +380,7 @@
   (set (make-local-variable 'font-lock-defaults)
        (list 'fasm-font-lock-keywords nil t))
   (set (make-local-variable 'indent-line-function) 'fasm-indent-line)
-  (setq comment-start ";"))
+  (set (make-local-variable 'comment-start) ";"))
 
 (provide 'fasm-mode)
 ;;; fasm-mode.el ends here
