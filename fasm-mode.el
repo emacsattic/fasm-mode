@@ -36,8 +36,6 @@
 
 ;;; Code:
 
-(defvar fasm-mode-hook nil)
-
 (defvar fasm-mode-syntax-table
   (let ((syntaxtable (make-syntax-table)))
     (modify-syntax-entry ?_ "w" syntaxtable)
