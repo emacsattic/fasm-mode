@@ -38,12 +38,14 @@
 
 (defvar fasm-mode-syntax-table
   (let ((syntaxtable (make-syntax-table)))
-    (modify-syntax-entry ?_ "w" syntaxtable)
-    (modify-syntax-entry ?. "w" syntaxtable)
-    (modify-syntax-entry ?$ "w" syntaxtable)
-    (modify-syntax-entry ?@ "w" syntaxtable)
-    (modify-syntax-entry ?~ "w" syntaxtable)
-    (modify-syntax-entry ?? "w" syntaxtable)
+    (modify-syntax-entry ?_ "_" syntaxtable)
+    (modify-syntax-entry ?. "_" syntaxtable)
+    (modify-syntax-entry ?$ "_" syntaxtable)
+    (modify-syntax-entry ?@ "_" syntaxtable)
+    (modify-syntax-entry ?~ "_" syntaxtable)
+    (modify-syntax-entry ?? "_" syntaxtable)
+    (modify-syntax-entry ?! "_" syntaxtable)
+    (modify-syntax-entry ?= "." syntaxtable)
     (modify-syntax-entry ?\\ "." syntaxtable)
     (modify-syntax-entry ?\; "<" syntaxtable)
     (modify-syntax-entry ?\n ">" syntaxtable)
@@ -62,14 +64,14 @@
 
 (eval-when-compile
   (defun fasm--regexp-from-keywords (&rest keywords)
-    (regexp-opt keywords 'words)))
+    (regexp-opt keywords 'symbols)))
 
 (defconst fasm-font-lock-keywords
   `(;; Numbers
-    ("\\<[01]+b\\>" . 'font-lock-constant-face)
-    ("\\<[0-9][0-9a-fA-F]*h\\>" . 'font-lock-constant-face)
-    ("\\<\\(?:0x\\|\\$\\)[0-9a-fA-F]+\\>" . 'font-lock-constant-face)
-    ("\\<[0-9]+\\(?:\\.[0-9]*\\)?\\(?:e[+-]?[0-9]+\\)?\\>" . 'font-lock-constant-face)
+    ("\\_<[01]+b\\_>" . 'font-lock-constant-face)
+    ("\\_<[0-9][0-9a-fA-F]*h\\_>" . 'font-lock-constant-face)
+    ("\\_<\\(?:0x\\|\\$\\)[0-9a-fA-F]+\\_>" . 'font-lock-constant-face)
+    ("\\_<[0-9]+\\(?:\\.[0-9]*\\)?\\(?:e[+-]?[0-9]+\\)?\\_>" . 'font-lock-constant-face)
     ;; Types
     (,(eval-when-compile
         (fasm--regexp-from-keywords
@@ -343,10 +345,10 @@
          "vfmsubadd213pd" "vfmsubadd213ps" "vfmsubadd231pd" "vfmsubadd231ps"
          "aeskeygenassist" "vaeskeygenassist")) . 'font-lock-builtin-face)
     ;; Labels
-    ("^[ \t]*\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\):"
+    ("^[ \t]*\\([a-zA-Z0-9.?!@]\\(?:\\sw\\|\\s_\\)*\\):"
      . (1 'font-lock-function-name-face))
     ;; Macro names
-    ("\\(?:macro\\|struc\\)[ \t]+\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\)"
+    ("\\(?:macro\\|struc\\)[ \t]+\\([a-zA-Z0-9.?!@]\\(?:\\sw\\|\\s_\\)*\\)"
      . (1 'font-lock-function-name-face)))
   "Syntax highlighting for FASM mode.")
 
