@@ -66,16 +66,16 @@
 
 (defconst fasm-font-lock-keywords
   `(;; Numbers
-    ("\\<[01]+b\\>" . font-lock-constant-face)
-    ("\\<[0-9][0-9a-fA-F]*h\\>" . font-lock-constant-face)
-    ("\\<\\(?:0x\\|\\$\\)[0-9a-fA-F]+\\>" . font-lock-constant-face)
-    ("\\<[0-9]+\\(?:\\.[0-9]*\\)?\\(?:e[+-]?[0-9]+\\)?\\>" . font-lock-constant-face)
+    ("\\<[01]+b\\>" . 'font-lock-constant-face)
+    ("\\<[0-9][0-9a-fA-F]*h\\>" . 'font-lock-constant-face)
+    ("\\<\\(?:0x\\|\\$\\)[0-9a-fA-F]+\\>" . 'font-lock-constant-face)
+    ("\\<[0-9]+\\(?:\\.[0-9]*\\)?\\(?:e[+-]?[0-9]+\\)?\\>" . 'font-lock-constant-face)
     ;; Types
     (,(eval-when-compile
         (fasm--regexp-from-keywords
          "byte" "word" "dword" "fword" "pword" "qword" "tbyte" "tword"
          "dqword" "xword" "qqword" "yword" "db" "rb" "dw" "du" "rw" "dd" "rd"
-         "df" "dp" "rf" "rp" "dq" "rq" "dt" "rt")) . font-lock-type-face)
+         "df" "dp" "rf" "rp" "dq" "rq" "dt" "rt")) . 'font-lock-type-face)
     ;; Directives and operators
     (,(eval-when-compile
         (fasm--regexp-from-keywords
@@ -87,13 +87,13 @@
          "if" "end" "err" "org" "data" "else" "heap" "load" "align" "break"
          "entry" "extrn" "label" "stack" "store" "times" "while" "assert"
          "format" "public" "repeat" "display" "section" "segment" "virtual"
-         "file")) . font-lock-keyword-face)
+         "file")) . 'font-lock-keyword-face)
     ;; Preprocessor directives
     (,(eval-when-compile
         (fasm--regexp-from-keywords
          "define" "include" "irp" "irps" "macro" "match" "purge" "rept"
          "restore" "restruc" "struc" "common" "forward" "local" "reverse"
-         "equ" "fix")) . font-lock-preprocessor-face)
+         "equ" "fix")) . 'font-lock-preprocessor-face)
     ;; Registers
     (,(eval-when-compile
         (fasm--regexp-from-keywords
@@ -109,7 +109,7 @@
          "xmm3" "xmm4" "xmm5" "xmm6" "xmm7" "xmm8" "xmm9" "xmm10" "xmm11"
          "xmm12" "xmm13" "xmm14" "xmm15" "ymm0" "ymm1" "ymm2" "ymm3" "ymm4"
          "ymm5" "ymm6" "ymm7" "ymm8" "ymm9" "ymm10" "ymm11" "ymm12" "ymm13"
-         "ymm14" "ymm15")) . font-lock-variable-name-face)
+         "ymm14" "ymm15")) . 'font-lock-variable-name-face)
     ;; Instructions
     (,(eval-when-compile
         (fasm--regexp-from-keywords
@@ -341,13 +341,13 @@
          "vfmaddsub132pd" "vfmaddsub132ps" "vfmaddsub213pd" "vfmaddsub213ps"
          "vfmaddsub231pd" "vfmaddsub231ps" "vfmsubadd132pd" "vfmsubadd132ps"
          "vfmsubadd213pd" "vfmsubadd213ps" "vfmsubadd231pd" "vfmsubadd231ps"
-         "aeskeygenassist" "vaeskeygenassist")) . font-lock-builtin-face)
+         "aeskeygenassist" "vaeskeygenassist")) . 'font-lock-builtin-face)
     ;; Labels
     ("^[ \t]*\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\):"
-     . (1 font-lock-function-name-face))
+     . (1 'font-lock-function-name-face))
     ;; Macro names
     ("\\(?:macro\\|struc\\)[ \t]+\\([a-zA-Z0-9.?@][a-zA-Z0-9_$@~.?]*\\)"
-     . (1 font-lock-function-name-face)))
+     . (1 'font-lock-function-name-face)))
   "Syntax highlighting for FASM mode.")
 
 (defun fasm--get-indent-level (lineoffset)
