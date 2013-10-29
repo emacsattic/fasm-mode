@@ -2,7 +2,7 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://github.com/Fanael/fasm-mode
-;; Version: 0.1.7
+;; Version: 0.1.8
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -46,6 +46,10 @@
     (modify-syntax-entry ?? "_" syntaxtable)
     (modify-syntax-entry ?! "_" syntaxtable)
     (modify-syntax-entry ?= "." syntaxtable)
+    (modify-syntax-entry ?+ "." syntaxtable)
+    (modify-syntax-entry ?- "." syntaxtable)
+    (modify-syntax-entry ?* "." syntaxtable)
+    (modify-syntax-entry ?/ "." syntaxtable)
     (modify-syntax-entry ?\\ "." syntaxtable)
     (modify-syntax-entry ?\; "<" syntaxtable)
     (modify-syntax-entry ?\n ">" syntaxtable)
@@ -71,7 +75,8 @@
     ("\\_<[01]+b\\_>" . 'font-lock-constant-face)
     ("\\_<[0-9][0-9a-fA-F]*h\\_>" . 'font-lock-constant-face)
     ("\\_<\\(?:0x\\|\\$\\)[0-9a-fA-F]+\\_>" . 'font-lock-constant-face)
-    ("\\_<[0-9]+\\(?:\\.[0-9]*\\)?\\(?:e[+-]?[0-9]+\\)?\\_>" . 'font-lock-constant-face)
+    ("\\_<[0-9]+\\(?:\\.[0-9]*\\)?\\(?:e[+-]?[0-9]+\\)?\\_>"
+     . 'font-lock-constant-face)
     ;; Types
     (,(eval-when-compile
         (fasm--regexp-from-keywords
