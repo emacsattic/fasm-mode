@@ -106,7 +106,7 @@
     (,(fasm--regexp-from-keywords
        "define" "include" "irp" "irps" "macro" "match" "purge" "rept" "restore"
        "restruc" "struc" "common" "forward" "local" "reverse" "equ" "fix")
-       . 'font-lock-preprocessor-face)
+     . 'font-lock-preprocessor-face)
     ;; Registers
     (,(fasm--regexp-from-keywords
        "al" "bl" "cl" "dl" "spl" "bpl" "sil" "dil" "r8b" "r9b" "r10b" "r11b"
