@@ -2,11 +2,11 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://github.com/Fanael/fasm-mode
-;; Version: 0.1.9
+;; Version: 0.1.10
 
 ;; This file is NOT part of GNU Emacs.
 
-;; Copyright (c) 2013, Fanael Linithien
+;; Copyright (c) 2013-2014, Fanael Linithien
 ;; All rights reserved.
 ;;
 ;; Redistribution and use in source and binary forms, with or without
@@ -378,13 +378,19 @@
 (defalias 'fasm-parent-mode
   (if (fboundp 'prog-mode) 'prog-mode 'fundamental-mode))
 
+(defmacro fasm--set-local (variable value)
+  `(set (make-local-variable ',variable) ,value))
+
 ;;;###autoload
 (define-derived-mode fasm-mode fasm-parent-mode "Fasm"
   "Major mode for editing assembly in FASM format."
-  (set (make-local-variable 'font-lock-defaults)
-       (list 'fasm-font-lock-keywords nil t))
-  (set (make-local-variable 'indent-line-function) 'fasm-indent-line)
-  (set (make-local-variable 'comment-start) ";"))
+  (fasm--set-local font-lock-defaults (list 'fasm-font-lock-keywords nil t))
+  (fasm--set-local indent-line-function 'fasm-indent-line)
+  (fasm--set-local comment-use-syntax t)
+  (fasm--set-local comment-start ";")
+  (fasm--set-local comment-end "")
+  (fasm--set-local comment-start-skip ";+[ \t]*")
+  (fasm--set-local comment-column 0))
 
 (provide 'fasm-mode)
 ;;; fasm-mode.el ends here
