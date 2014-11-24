@@ -2,7 +2,7 @@
 
 ;; Author: Fanael Linithien <fanael4@gmail.com>
 ;; URL: https://github.com/Fanael/fasm-mode
-;; Version: 0.1.10
+;; Version: 0.1.11
 
 ;; This file is NOT part of GNU Emacs.
 
