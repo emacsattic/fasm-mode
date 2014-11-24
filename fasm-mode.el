@@ -88,7 +88,8 @@
     (,(fasm--regexp-from-keywords
        "byte" "word" "dword" "fword" "pword" "qword" "tbyte" "tword" "dqword"
        "xword" "qqword" "yword" "db" "rb" "dw" "du" "rw" "dd" "rd" "df" "dp"
-       "rf" "rp" "dq" "rq" "dt" "rt") . 'font-lock-type-face)
+       "rf" "rp" "dq" "rq" "dt" "rt")
+     . 'font-lock-type-face)
     ;; Directives and operators
     (,(fasm--regexp-from-keywords
        "mod" "rva" "plt" "align" "as" "at" "defined" "dup" "eq" "eqtype" "from"
@@ -98,7 +99,8 @@
        "discardable" "interpreter" "notpageable" "if" "end" "err" "org" "data"
        "else" "heap" "load" "align" "break" "entry" "extrn" "label" "stack"
        "store" "times" "while" "assert" "format" "public" "repeat" "display"
-       "section" "segment" "virtual" "file") . 'font-lock-keyword-face)
+       "section" "segment" "virtual" "file")
+     . 'font-lock-keyword-face)
     ;; Preprocessor directives
     (,(fasm--regexp-from-keywords
        "define" "include" "irp" "irps" "macro" "match" "purge" "rept" "restore"
@@ -117,7 +119,8 @@
        "mm5" "mm6" "mm7" "xmm0" "xmm1" "xmm2" "xmm3" "xmm4" "xmm5" "xmm6" "xmm7"
        "xmm8" "xmm9" "xmm10" "xmm11" "xmm12" "xmm13" "xmm14" "xmm15" "ymm0"
        "ymm1" "ymm2" "ymm3" "ymm4" "ymm5" "ymm6" "ymm7" "ymm8" "ymm9" "ymm10"
-       "ymm11" "ymm12" "ymm13" "ymm14" "ymm15") . 'font-lock-variable-name-face)
+       "ymm11" "ymm12" "ymm13" "ymm14" "ymm15")
+     . 'font-lock-variable-name-face)
     ;; Instructions
     (,(fasm--regexp-from-keywords
        "bt" "in" "ja" "jb" "jc" "je" "jg" "jl" "jo" "jp" "js" "jz" "or" "aaa"
@@ -335,7 +338,8 @@
        "vfmaddsub132pd" "vfmaddsub132ps" "vfmaddsub213pd" "vfmaddsub213ps"
        "vfmaddsub231pd" "vfmaddsub231ps" "vfmsubadd132pd" "vfmsubadd132ps"
        "vfmsubadd213pd" "vfmsubadd213ps" "vfmsubadd231pd" "vfmsubadd231ps"
-       "aeskeygenassist" "vaeskeygenassist") . 'font-lock-builtin-face)
+       "aeskeygenassist" "vaeskeygenassist")
+     . 'font-lock-builtin-face)
     ;; Labels
     (,(rx (and line-start
                (* (any " " "\t"))
