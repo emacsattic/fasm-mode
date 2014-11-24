@@ -83,13 +83,13 @@
                                 (? (any "+" "-"))
                                 (+ (any "0-9"))))))
                symbol-end))
-     . 'font-lock-constant-face)
+     . font-lock-constant-face)
     ;; Types
     (,(fasm--regexp-from-keywords
        "byte" "word" "dword" "fword" "pword" "qword" "tbyte" "tword" "dqword"
        "xword" "qqword" "yword" "db" "rb" "dw" "du" "rw" "dd" "rd" "df" "dp"
        "rf" "rp" "dq" "rq" "dt" "rt")
-     . 'font-lock-type-face)
+     . font-lock-type-face)
     ;; Directives and operators
     (,(fasm--regexp-from-keywords
        "mod" "rva" "plt" "align" "as" "at" "defined" "dup" "eq" "eqtype" "from"
@@ -100,12 +100,12 @@
        "else" "heap" "load" "align" "break" "entry" "extrn" "label" "stack"
        "store" "times" "while" "assert" "format" "public" "repeat" "display"
        "section" "segment" "virtual" "file")
-     . 'font-lock-keyword-face)
+     . font-lock-keyword-face)
     ;; Preprocessor directives
     (,(fasm--regexp-from-keywords
        "define" "include" "irp" "irps" "macro" "match" "purge" "rept" "restore"
        "restruc" "struc" "common" "forward" "local" "reverse" "equ" "fix")
-     . 'font-lock-preprocessor-face)
+     . font-lock-preprocessor-face)
     ;; Registers
     (,(fasm--regexp-from-keywords
        "al" "bl" "cl" "dl" "spl" "bpl" "sil" "dil" "r8b" "r9b" "r10b" "r11b"
@@ -120,7 +120,7 @@
        "xmm8" "xmm9" "xmm10" "xmm11" "xmm12" "xmm13" "xmm14" "xmm15" "ymm0"
        "ymm1" "ymm2" "ymm3" "ymm4" "ymm5" "ymm6" "ymm7" "ymm8" "ymm9" "ymm10"
        "ymm11" "ymm12" "ymm13" "ymm14" "ymm15")
-     . 'font-lock-variable-name-face)
+     . font-lock-variable-name-face)
     ;; Instructions
     (,(fasm--regexp-from-keywords
        "bt" "in" "ja" "jb" "jc" "je" "jg" "jl" "jo" "jp" "js" "jz" "or" "aaa"
@@ -339,7 +339,7 @@
        "vfmaddsub231pd" "vfmaddsub231ps" "vfmsubadd132pd" "vfmsubadd132ps"
        "vfmsubadd213pd" "vfmsubadd213ps" "vfmsubadd231pd" "vfmsubadd231ps"
        "aeskeygenassist" "vaeskeygenassist")
-     . 'font-lock-builtin-face)
+     . font-lock-builtin-face)
     ;; Labels
     (,(rx (and line-start
                (* (any " " "\t"))
@@ -347,14 +347,14 @@
                            (* (or (syntax word)
                                   (syntax symbol)))))
                ":"))
-     . (1 'font-lock-function-name-face))
+     1 font-lock-function-name-face)
     ;; Macro names
     (,(rx (and (or "macro" "struct")
                (+ (any " " "\t"))
                (group (and (any "a-z" "A-Z" "0-9" "." "?" "!" "@")
                            (* (or (syntax word)
                                   (syntax symbol)))))))
-     . (1 'font-lock-function-name-face)))
+     1 font-lock-function-name-face))
   "Syntax highlighting for FASM mode.")
 
 (defun fasm--get-indent-level (lineoffset)
