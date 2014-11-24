@@ -366,14 +366,13 @@
 (defun fasm-indent-line ()
   "Indent according to FASM major mode."
   (interactive)
-  (let ((tab-width fasm-basic-offset))
-    (let ((previndent (fasm--get-indent-level 0))
-          (currindent (fasm--get-indent-level 1)))
-      (if (or (> previndent currindent)
-              (eq this-command 'newline-and-indent)
-              (eq this-command 'evil-ret-and-indent))
-          (indent-to previndent)
-        (insert-tab)))))
+  (let* ((tab-width fasm-basic-offset)
+         (previndent (fasm--get-indent-level 0))
+         (currindent (fasm--get-indent-level 1)))
+    (if (or (> previndent currindent)
+            (memq this-command '(newline-and-indent evil-ret-and-indent)))
+        (indent-to previndent)
+      (insert-tab))))
 
 ;; Emacs < 24 did not have prog-mode
 (defalias 'fasm-parent-mode
