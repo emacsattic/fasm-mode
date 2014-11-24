@@ -375,7 +375,7 @@
 
 ;; Emacs < 24 did not have prog-mode
 (defalias 'fasm-parent-mode
-  (if (fboundp 'prog-mode) 'prog-mode 'fundamental-mode))
+  (if (fboundp 'prog-mode) #'prog-mode #'fundamental-mode))
 
 (defmacro fasm--set-local (variable value)
   `(set (make-local-variable ',variable) ,value))
@@ -384,7 +384,7 @@
 (define-derived-mode fasm-mode fasm-parent-mode "Fasm"
   "Major mode for editing assembly in FASM format."
   (fasm--set-local font-lock-defaults (list 'fasm-font-lock-keywords nil t))
-  (fasm--set-local indent-line-function 'fasm-indent-line)
+  (fasm--set-local indent-line-function #'fasm-indent-line)
   (fasm--set-local comment-use-syntax t)
   (fasm--set-local comment-start ";")
   (fasm--set-local comment-end "")
