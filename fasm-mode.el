@@ -383,7 +383,7 @@
 ;;;###autoload
 (define-derived-mode fasm-mode fasm-parent-mode "Fasm"
   "Major mode for editing assembly in FASM format."
-  (fasm--set-local font-lock-defaults (list 'fasm-font-lock-keywords nil t))
+  (fasm--set-local font-lock-defaults '(fasm-font-lock-keywords nil t))
   (fasm--set-local indent-line-function #'fasm-indent-line)
   (fasm--set-local comment-use-syntax t)
   (fasm--set-local comment-start ";")
